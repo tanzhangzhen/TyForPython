@@ -2,6 +2,7 @@
 
 import xml.etree.ElementTree as ET
 import codecs
+import sys
 import os
 
 """
@@ -95,23 +96,14 @@ def sunroot(root, newPrcscd, tablesNodes, tableOld, tableNew):
         
             
 if(__name__  ==  '__main__'):
-    
-    filepath = "../"#"/Users/tanzhangzhen/Downloads/workspace/TyForPython/"
-    
-    
-    path = os.path.abspath(r"tzz.py")
-    print "绝对路径拼接：", path
-    print "路径名，文件名", os.path.split(path)#分离扩展名：
-    print "路径名", os.path.dirname(path)#获取路径名：
-    print "文件名", os.path.basename(path)#获取文件名
-    print "当前python文件在目录下", os.getcwd()#得到当前工作目录，即当前Python脚本工作的目录路径
-    print "当前目录下的文件", os.listdir("../")#返回指定目录下的所有文件和目录名
+
+    filepath = "../"
 
     #读文件获取要处理的通讯码
     filePrcscd = filepath + "prcscd.txt"
     cntfile = open(filePrcscd, "r")
     contents = cntfile.read();
-    newPrcscd = contents.split('\r\n')
+    newPrcscd = contents.split('\n')
     print "需要处理的通讯码个数" + str(len(newPrcscd)) + str(newPrcscd)
     cntfile.close()
     

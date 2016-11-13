@@ -1,3 +1,7 @@
 eclipse.preferences.version=1
-encoding//dealDatamap/__init__.py=utf-8
-encoding//tyTest/test.py=utf-8
+encoding//datamap/__init__.py=utf-8
+encoding//datamap/dealdatamap.py=utf-8
+encoding//tyTest/demo_chagenm.py=utf-8
+encoding//tyTest/demo_os.py=utf-8
+encoding//tyTest/demo_thief.py=utf-8
+encoding//tyTest/ty_doc.py=utf-8

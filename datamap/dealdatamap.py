@@ -2,10 +2,10 @@
 
 import xml.etree.ElementTree as ET
 import codecs
-import sys
 import os
 
 """
+    2016-11-13 15:35 tzz
     #1、读取需要处理的文件，替换头部
     #2、处理后的文件写入临时文件中，接下来直接修改临时文件(不改变源文件)
     #3、遍历节点，处理数据
@@ -33,9 +33,9 @@ def dealxmlTree(filename,newPrcscd):
     sunroot(root, newPrcscd, tablesNodes, tableOld, tableNew)
     
     #写文件
-    writeXmlFile(tablesNodes, filepath + "datamap_ty.map")
-    writeXmlFile(tablesOld, filepath + "datamap_ty1.map")
-    writeXmlFile(tablesNew, filepath + "datamap_ty2.map")
+    writeXmlFile(tablesNodes, tempFileName)
+    writeXmlFile(tablesOld, datamapOld)
+    writeXmlFile(tablesNew, datamapNew)
     
 def writeXmlFile(tree, fileName):
     ET.ElementTree(tree).write(fileName, "GB2312", True, None, "xml")
@@ -96,14 +96,14 @@ def sunroot(root, newPrcscd, tablesNodes, tableOld, tableNew):
         
             
 if(__name__  ==  '__main__'):
-    type = sys.getfilesystemencoding()
-    print os.getcwd()#得到当前工作目录，即当前Python脚本工作的目录路径
-    filepath = "/Users/tanzhangzhen/Downloads/workspace/TyForPython/"
+    
+    filepath = "../"#"/Users/tanzhangzhen/Downloads/workspace/TyForPython/"
+
     #读文件获取要处理的通讯码
     filePrcscd = filepath + "prcscd.txt"
-    cntfile = open("/Users/tanzhangzhen/Downloads/workspace/TyForPython/prcscd.txt", "r")
+    cntfile = open(filePrcscd, "r")
     contents = cntfile.read();
-    newPrcscd = contents.split('\n')
+    newPrcscd = contents.split('\r\n')
     print "需要处理的通讯码个数" + str(len(newPrcscd)) + str(newPrcscd)
     cntfile.close()
     
@@ -119,6 +119,9 @@ if(__name__  ==  '__main__'):
     tempFile = open(tempFileName, 'w')
     tempFile.write(text)
     tempFile.close()
+    
+    datamapOld = filepath + "datamapOld.map"
+    datamapNew = filepath + "datamapNew.map"
     
     #处理数据
     tree1 = {}
